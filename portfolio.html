@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Portfolio</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #666;
+            --accent: #0066cc;
+            --bg: #ffffff;
+            --border: #e0e0e0;
+            --spacing: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 3rem var(--spacing);
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.03), rgba(26, 26, 26, 0.02));
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            max-width: 600px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem var(--spacing);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .sample-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .sample-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .pdf-preview {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 102, 204, 0.02));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pdf-preview svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.3;
+        }
+
+        .pdf-preview-text {
+            position: absolute;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            text-align: center;
+        }
+
+        .sample-content {
+            padding: 1.5rem;
+        }
+
+        .sample-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .sample-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sample-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .sample-description {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .sample-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: #0052a3;
+            border-color: #0052a3;
+        }
+
+        .btn-secondary {
+            background-color: var(--bg);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 102, 204, 0.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem var(--spacing);
+            border-top: 1px solid var(--border);
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 2rem var(--spacing);
+            }
+
+            main {
+                padding: 2rem var(--spacing);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Writing Portfolio</h1>
+            <p class="tagline">Journalism, communications, and strategic content across defense, technology, and institutional narrative.</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="portfolio-grid" id="portfolio"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026. All writing samples available for review.</p>
+    </footer>
+
+    <script>
+        // EDIT THIS ARRAY TO ADD YOUR SAMPLES
+        const samples = [
+            {
+                title: "Sample Title One",
+                organization: "Publication Name",
+                date: "Month 2026",
+                category: "Feature",
+                description: "Brief description of the piece—what it covers, why it matters, and what makes it notable. One or two sentences.",
+                pdfUrl: "your-pdf-filename.pdf",
+                externalUrl: null // Optional: link to published version
+            },
+            {
+                title: "Sample Title Two",
+                organization: "Publication Name",
+                date: "Month 2026",
+                category: "Profile",
+                description: "Another sample. Describe the scope and approach.",
+                pdfUrl: "another-pdf-filename.pdf",
+                externalUrl: "https://example.com/published-article"
+            },
+            {
+                title: "Sample Title Three",
+                organization: "Publication Name",
+                date: "Month 2026",
+                category: "Analysis",
+                description: "Keep descriptions concise and outcome-focused.",
+                pdfUrl: "third-pdf-filename.pdf",
+                externalUrl: null
+            }
+        ];
+
+        function renderPortfolio() {
+            const portfolio = document.getElementById('portfolio');
+            
+            samples.forEach(sample => {
+                const card = document.createElement('div');
+                card.className = 'sample-card';
+                
+                card.innerHTML = `
+                    <div class="pdf-preview">
+                        <div class="pdf-preview-text">📄 PDF</div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <div class="sample-content">
+                        <h3>${sample.title}</h3>
+                        <div class="sample-meta">
+                            <span>${sample.organization}</span>
+                            <span>${sample.date}</span>
+                            <span style="color: var(--accent); font-weight: 500;">${sample.category}</span>
+                        </div>
+                        <p class="sample-description">${sample.description}</p>
+                        <div class="sample-actions">
+                            <a href="${sample.pdfUrl}" class="btn btn-primary" download>Download PDF</a>
+                            ${sample.externalUrl ? `<a href="${sample.externalUrl}" target="_blank" rel="noopener" class="btn btn-secondary">View Online</a>` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                portfolio.appendChild(card);
+            });
+        }
+
+        // Render on page load
+        document.addEventListener('DOMContentLoaded', renderPortfolio);
+    </script>
+</body>
+</html>
